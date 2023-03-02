@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   pull_request:
     branches:
-    - main
+      - cip
 
 jobs:
   changes:
@@ -26,34 +26,34 @@ jobs:
       spark: ${{ steps.filter.outputs.spark }}
       vscode: ${{ steps.filter.outputs.vscode }}
     steps:
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with:
-        filters: |
-          base:
-            - 'base/**'
-          jupyter:
-            - 'jupyter/**'
-          python-datascience:
-            - 'python-datascience/**'
-          python-minimal:
-            - 'python-minimal/**'
-          python-pytorch:
-            - 'python-pytorch/**'
-          python-tensorflow:
-            - 'python-tensorflow/**'
-          r-datascience:
-            - 'r-datascience/**'
-          r-minimal:
-            - 'r-minimal/**'
-          r-python-julia:
-            - 'r-python-julia/**'
-          rstudio:
-            - 'rstudio/**'
-          spark:
-            - 'spark/**'
-          vscode:
-            - 'vscode/**'
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            base:
+              - 'base/**'
+            jupyter:
+              - 'jupyter/**'
+            python-datascience:
+              - 'python-datascience/**'
+            python-minimal:
+              - 'python-minimal/**'
+            python-pytorch:
+              - 'python-pytorch/**'
+            python-tensorflow:
+              - 'python-tensorflow/**'
+            r-datascience:
+              - 'r-datascience/**'
+            r-minimal:
+              - 'r-minimal/**'
+            r-python-julia:
+              - 'r-python-julia/**'
+            rstudio:
+              - 'rstudio/**'
+            spark:
+              - 'spark/**'
+            vscode:
+              - 'vscode/**'
   base:
     needs: changes
     if: ${{ needs.changes.outputs.base == 'true' }}
