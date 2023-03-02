@@ -3,8 +3,8 @@ name: Build and push Docker images
 on:
   workflow_dispatch:
   schedule:
-  # every monday at 2am
-    - cron: '0 1 * * 1'
+    # every monday at 2am
+    - cron: "0 1 * * 1"
 
 jobs:
   base:
@@ -16,6 +16,21 @@ jobs:
       base_image: ubuntu:22.04
       base_image_gpu: nvidia/cuda:11.7.1-cudnn8-devel-ubuntu22.04
       external_base_image: true
+      branch: ${{ github.ref }}
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  nodejs-minimal:
+    needs: [base]
+    uses: ./.github/workflows/main-workflow-template.yml
+    with:
+      image: nodejs-minimal
+      context: nodejs-minimal
+      test: true
+      base_image: base
+      nodejs_version_1: 19.7.0
+      nodejs_version_2: 18.14.2
       branch: ${{ github.ref }}
     secrets:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
