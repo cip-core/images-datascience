@@ -1,7 +1,8 @@
 name: Template to build and push Docker images
 
 env:
-  OWNER: ${{ github.repository_owner }}
+  #OWNER: ${{ github.repository_owner }}
+  OWNER: ciprnd
 
 on:
   workflow_call:
