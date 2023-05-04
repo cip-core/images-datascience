@@ -65,7 +65,7 @@ rm -f kafka_2.13-3.0.2.tgz
 
 # Python-kafka
 # No specific version requested, installing latest
-pip install -U python-kafka
+pip install python-kafka
 
 # MongoDB community & MongoDB Shell
 # No MongoDB server version requested, installing latest
