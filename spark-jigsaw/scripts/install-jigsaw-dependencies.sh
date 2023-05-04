@@ -63,9 +63,9 @@ wget -q https://downloads.apache.org/kafka/3.0.2/kafka_2.13-3.0.2.tgz
 tar xzf kafka_2.13-3.0.2.tgz -C $KAFKA_HOME --owner root --group root --no-same-owner --strip-components=1
 rm -f kafka_2.13-3.0.2.tgz
 
-# Python-kafka
+# kafka-python-
 # No specific version requested, installing latest
-pip install python-kafka
+pip install kafka-python
 
 # MongoDB community & MongoDB Shell
 # No MongoDB server version requested, installing latest
