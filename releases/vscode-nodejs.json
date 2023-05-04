@@ -1,0 +1,24 @@
+[
+    {
+        "base_image":"nodejs-minimal-delim-v:nodejs_version_1",
+        "output_image":"vscode-nodejs-delim-v:nodejs_version_1",
+        "nodejs_version":":nodejs_version_1"
+    },
+    {
+        "base_image":"nodejs-minimal-delim-v:nodejs_version_1",
+        "output_image":"vscode-nodejs-delim-v:nodejs_version_1",
+        "nodejs_version":":nodejs_version_1",
+        "gpu":"true"
+    },
+    {
+        "base_image":"nodejs-minimal-delim-v:nodejs_version_2",
+        "output_image":"vscode-nodejs-delim-v:nodejs_version_2",
+        "nodejs_version":":nodejs_version_2"
+    },
+    {
+        "base_image":"nodejs-minimal-delim-v:nodejs_version_2",
+        "output_image":"vscode-nodejs-delim-v:nodejs_version_2",
+        "nodejs_version":":nodejs_version_2",
+        "gpu":"true"
+    }
+]
