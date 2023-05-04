@@ -8,14 +8,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: ['inseefrlab/onyxia-base:latest', 'inseefrlab/onyxia-base:latest-gpu',
-                 'inseefrlab/onyxia-python:latest', 'inseefrlab/onyxia-python:latest-gpu',
-                 'inseefrlab/onyxia-jupyter-python:latest', 'inseefrlab/onyxia-jupyter-python:latest-gpu',
-                 'inseefrlab/onyxia-vscode-python:latest', 'inseefrlab/onyxia-vscode-python:latest-gpu',
-                 'inseefrlab/onyxia-pyspark:latest', 'inseefrlab/onyxia-pyspark:latest-gpu',
-                 'inseefrlab/onyxia-rstudio:latest', 'inseefrlab/onyxia-rstudio:latest-gpu',
-                 'inseefrlab/onyxia-sparkr:latest', 'inseefrlab/onyxia-sparkr:latest-gpu',
-                 'inseefrlab/onyxia-rstudio-sparkr:latest', 'inseefrlab/onyxia-rstudio-sparkr:latest-gpu']
+        image: ['ciprnd/onyxia-base:latest', 'ciprnd/onyxia-base:latest-gpu',
+                 'ciprnd/onyxia-python:latest', 'ciprnd/onyxia-python:latest-gpu',
+                 'ciprnd/onyxia-jupyter-python:latest', 'ciprnd/onyxia-jupyter-python:latest-gpu',
+                 'ciprnd/onyxia-vscode-python:latest', 'ciprnd/onyxia-vscode-python:latest-gpu',
+                 'ciprnd/onyxia-vscode-pyspark-jigsaw:latest', 'ciprnd/onyxia-vscode-pyspark-jigsaw:latest-gpu',
+                 'ciprnd/onyxia-pyspark:latest', 'ciprnd/onyxia-pyspark:latest-gpu',
+                 'ciprnd/onyxia-pyspark-jigsaw:latest', 'ciprnd/onyxia-pyspark-jigsaw:latest-gpu',
+                 'ciprnd/onyxia-rstudio:latest', 'ciprnd/onyxia-rstudio:latest-gpu',
+                 'ciprnd/onyxia-sparkr:latest', 'ciprnd/onyxia-sparkr:latest-gpu',
+                 'ciprnd/onyxia-rstudio-sparkr:latest', 'ciprnd/onyxia-rstudio-sparkr:latest-gpu']
     name: scan images
     runs-on: ubuntu-20.04
     steps:
@@ -29,7 +31,7 @@ jobs:
           format: 'sarif'
           output: 'trivy-results.sarif'
           timeout: '30m0s'
-          security-checks: 'vuln'
+          scanners: 'vuln'
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2

@@ -18,6 +18,7 @@ They can be used alone but are designed to work with the [Onyxia](https://github
       B-->RM[r-minimal]:::minimal;
       PM-->PYDS[python-datascience]:::package;
       PM-->PYSPARK[python-pyspark]:::package;
+      PM-->PYSPARKJIGSAW[python-pyspark-jigsaw]:::package;
       PM-->PYTENSORFLOW[python-tensorflow]:::package;
       PM-->PYTORCH[python-pytorch]:::package;
       RM-->RDS[r-datascience]:::package;
@@ -28,6 +29,7 @@ They can be used alone but are designed to work with the [Onyxia](https://github
       PYTENSORFLOW--> JPYTENSORFLOW[jupyter-tensorflow]:::ide;
       PYTORCH--> JPYTORCH[jupyter-pytorch]:::ide;
       PYSPARK--> VSCODEPYSPARK[vscode-pyspark]:::ide;
+      PYSPARKJIGSAW--> VSCODEPYSPARKJIGSAW[vscode-pyspark-jigsaw]:::ide;
       PYDS--> VSCODEPYDS[vscode-python]:::ide;
       PYTENSORFLOW--> VSCODEPYTENSORFLOW[vscode-tensorflow]:::ide;
       PYTORCH--> VSCODEPYTORCH[vscode-pytorch]:::ide;

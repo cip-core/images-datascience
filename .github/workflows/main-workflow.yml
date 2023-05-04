@@ -172,6 +172,22 @@ jobs:
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  pyspark-jigsaw:
+    needs: [python-minimal]
+    uses: ./.github/workflows/main-workflow-template.yml
+    with:
+      image: pyspark-jigsaw
+      context: spark-jigsaw
+      test: true
+      base_image: python-minimal
+      python_version_1: 3.10.9
+      python_version_2: 3.9.16
+      spark_version: 3.3.1
+      branch: ${{ github.ref }}
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
   jupyter-pyspark:
     needs: [pyspark]
     uses: ./.github/workflows/main-workflow-template.yml
@@ -196,6 +212,22 @@ jobs:
       context: vscode
       test: true
       base_image: pyspark
+      python_version_1: 3.10.9
+      python_version_2: 3.9.16
+      spark_version: 3.3.1
+      branch: ${{ github.ref }}
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  vscode-pyspark-jigsaw:
+    needs: [pyspark-jigsaw]
+    uses: ./.github/workflows/main-workflow-template.yml
+    with:
+      image: vscode-pyspark-jigsaw
+      context: vscode
+      test: true
+      base_image: pyspark-jigsaw
       python_version_1: 3.10.9
       python_version_2: 3.9.16
       spark_version: 3.3.1
