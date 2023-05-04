@@ -38,13 +38,25 @@ commandTests:
     expectedOutput: ["/usr/local/bin/argo"]
   - name: "Does the binary exists?"
     command: "which"
-    args: ["mamba"]
-    expectedOutput: ["/opt/mamba/bin/mamba"]
+    args: ["node"]
+    expectedOutput: ["/usr/local/bin/node"]
   - name: "Does the binary exists?"
     command: "which"
-    args: ["python"]
-    expectedOutput: ["/opt/mamba/bin/python"]
+    args: ["nodejs"]
+    expectedOutput: ["/usr/local/bin/nodejs"]
   - name: "Does the binary exists?"
     command: "which"
-    args: ["pip"]
-    expectedOutput: ["/opt/mamba/bin/pip"]
+    args: ["npm"]
+    expectedOutput: ["/usr/local/bin/npm"]
+  - name: "Does the binary exists?"
+    command: "which"
+    args: ["npx"]
+    expectedOutput: ["/usr/local/bin/npx"]
+  - name: "Does the binary exists?"
+    command: "which"
+    args: ["yarn"]
+    expectedOutput: ["/usr/local/bin/yarn"]
+  - name: "Does the binary exists?"
+    command: "which"
+    args: ["yarnpkg"]
+    expectedOutput: ["/usr/local/bin/yarnpkg"]
