@@ -20,7 +20,7 @@ ENV HADOOP_OPTIONAL_TOOLS="hadoop-aws"
 ENV KAFKA_HOME="/opt/kafka"
 ENV MONGODB_HOME="/opt/mongodb"
 
-ENV PATH="${JAVA_HOME}/bin:${SPARK_HOME}/bin:${HADOOP_HOME}/bin:${KAFKA_HOME}/bin:${MONGODB_HOME}/bin:${PATH}"
+ENV PATH="${JAVA_HOME}/bin:${SPARK_HOME}/bin:${HADOOP_HOME}/bin:${KAFKA_HOME}/bin:${MONGODB_HOME}/bin:${HIVE_HOME}/bin:${PATH}"
 
 USER root
 
