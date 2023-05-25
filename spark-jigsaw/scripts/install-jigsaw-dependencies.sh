@@ -82,3 +82,19 @@ rm -f mongosh-1.8.2-linux-x64.tgz
 # No specific version requested, installing latest available
 apt-get -y install maven
 mvn dependency:get -DgroupId=org.mongodb.spark -DartifactId=mongo-spark-connector_2.13 -Dversion=10.1.1
+
+# Hadoop startup script will make ssh connection and we need the environment variables defined as well when the remote connections are opened.
+cat <<EOT >> /etc/environment
+# Env from Insee's Spark container
+export HADOOP_HOME="/opt/hadoop"
+export SPARK_HOME="/opt/spark"
+export HIVE_HOME="/opt/hive"
+export PYTHONPATH="/opt/spark/python:/opt/spark/python/lib"
+export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M"
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+export HADOOP_OPTIONAL_TOOLS="hadoop-aws"
+
+# Jigsaw's specifics
+export KAFKA_HOME="/opt/kafka"
+export MONGODB_HOME="/opt/mongodb"
+EOT

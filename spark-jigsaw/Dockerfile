@@ -20,7 +20,7 @@ ENV HADOOP_OPTIONAL_TOOLS="hadoop-aws"
 ENV KAFKA_HOME="/opt/kafka"
 ENV MONGODB_HOME="/opt/mongodb"
 
-ENV PATH="${JAVA_HOME}/bin:${SPARK_HOME}/bin:${HADOOP_HOME}/bin:${KAFKA_HOME}/bin:${MONGODB_HOME}/bin:${HIVE_HOME}/bin:${PATH}"
+ENV PATH="${JAVA_HOME}/bin:${SPARK_HOME}/bin:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${KAFKA_HOME}/bin:${MONGODB_HOME}/bin:${HIVE_HOME}/bin:${PATH}"
 
 USER root
 
@@ -33,12 +33,18 @@ RUN --mount=type=secret,id=github_token \
     # Install JDK
     apt-get install -y --no-install-recommends \
         ca-certificates-java \
-        openjdk-11-jre-headless && \
+        openjdk-11-jre-headless \
+        openssh-server && \
+    service ssh start && \
+    sudo -u onyxia ssh-keygen -t rsa -f ~onyxia/.ssh/id_rsa -P '' && \
+    ssh-keyscan localhost 2> /dev/null > ~onyxia/.ssh/known_hosts && \
+    service ssh stop && \
+    echo "DONE INSTALLING SSH" && \
     # Install Spark/Hadoop/Hive
     #/opt/install-spark-hadoop-hive.sh && \
     /opt/install-jigsaw-dependencies.sh && \
     # Put Spark config in the right place
-    cp /opt/spark-env.sh $SPARK_HOME/conf && \
+    #cp /opt/spark-env.sh $SPARK_HOME/conf && \
     # Install additional packages if R is installed
     if command -v R; then \
         /rocker_scripts/install_tidyverse.sh && \
