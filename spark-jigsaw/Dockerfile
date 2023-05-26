@@ -33,7 +33,7 @@ RUN --mount=type=secret,id=github_token \
     # Install JDK
     apt-get install -y --no-install-recommends \
         ca-certificates-java \
-        openjdk-11-jre-headless \
+        openjdk-11-jdk-headless \
         openssh-server && \
     service ssh start && \
     sudo -u onyxia ssh-keygen -t rsa -f ~onyxia/.ssh/id_rsa -P '' && \
