@@ -37,6 +37,8 @@ RUN --mount=type=secret,id=github_token \
         openssh-server && \
     service ssh start && \
     sudo -u onyxia ssh-keygen -t rsa -f ~onyxia/.ssh/id_rsa -P '' && \
+    cp -p ~onyxia/.ssh/id_rsa.pub ~onyxia/.ssh/authorized_keys && \
+    chmod 600 ~onyxia/.ssh/authorized_keys && \
     ssh-keyscan localhost 2> /dev/null > ~onyxia/.ssh/known_hosts && \
     service ssh stop && \
     echo "DONE INSTALLING SSH" && \
