@@ -55,6 +55,13 @@ rm ${HIVE_HOME}/lib/jline-2.12.jar
 # VSCode: already installed in previous steps or parent image
 # Spark: requested v3.2.3 but unavailable from Onyxia team, keeping v3.3.1 already installed in previous steps
 
+# Configuuring Hadoop
+git clone https://github.com/cip-core/hadoop-install.git
+(cd hadoop-install && ./create_dirs.sh)
+cp -R hadoop-install/etc/hadoop/* $HADOOP_CONF_DIR/
+rm -rf hadoop-install
+hadoop namenode -format
+
 # Apache kafka
 # Requested v3.0, installing v3.0.2 (latest v3.0)
 # Latest version available: v3.4.x
@@ -93,6 +100,7 @@ export PYTHONPATH="/opt/spark/python:/opt/spark/python/lib"
 export SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M"
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 export HADOOP_OPTIONAL_TOOLS="hadoop-aws"
+export PATH="${PATH}:\${JAVA_HOME}/bin:${SPARK_HOME}/bin:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${KAFKA_HOME}/bin:${MONGODB_HOME}/bin:${HIVE_HOME}/bin:${PATH}"
 
 # Jigsaw's specifics
 export KAFKA_HOME="/opt/kafka"

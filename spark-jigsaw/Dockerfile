@@ -19,8 +19,9 @@ ENV HADOOP_OPTIONAL_TOOLS="hadoop-aws"
 # Jigsaw's specifics
 ENV KAFKA_HOME="/opt/kafka"
 ENV MONGODB_HOME="/opt/mongodb"
+ENV HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 
-ENV PATH="${JAVA_HOME}/bin:${SPARK_HOME}/bin:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${KAFKA_HOME}/bin:${MONGODB_HOME}/bin:${HIVE_HOME}/bin:${PATH}"
+ENV PATH="\${JAVA_HOME}/bin:${SPARK_HOME}/bin:${HADOOP_HOME}/bin:${HADOOP_HOME}/sbin:${KAFKA_HOME}/bin:${MONGODB_HOME}/bin:${HIVE_HOME}/bin:${PATH}"
 
 USER root
 
